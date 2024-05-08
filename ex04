@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class ex04{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite o número de múltiplos a serem encontrados: ");
+        int n = scanner.nextInt();
+
+        System.out.print("Digite o valor de i: ");
+        int i = scanner.nextInt();
+        System.out.print("Digite o valor de j: ");
+        int j = scanner.nextInt();
+
+        scanner.close();
+
+        int count = 0;
+
+        int numero = 0;
+
+        while (count < n) {
+            if (numero % i == 0 || numero % j == 0) {
+                System.out.print(numero + " ");
+                count++;
+            }
+            numero++;
+        }
+    }
+}
