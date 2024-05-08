@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class VerificarPrimeiroUltimoDigitos {
+    public static void main(String[] args) {
+     
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite um número inteiro positivo: ");
+        int numero = scanner.nextInt();
+
+        String numeroStr = Integer.toString(numero);
+
+        boolean saoIguais = false;
+        if (numeroStr.length() >= 2 && numeroStr.charAt(0) == numeroStr.charAt(numeroStr.length() - 1)) {
+            saoIguais = true;
+        }
+  
+        if (saoIguais) {
+            System.out.println("O primeiro e o último dígitos do número " + numero + " são iguais.");
+        } else {
+            System.out.println("O primeiro e o último dígitos do número " + numero + " não são iguais.");
+        }
+
+        scanner.close();
+    }
+}
