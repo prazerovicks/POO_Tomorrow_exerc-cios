@@ -1,0 +1,43 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class HipotenusaTrianguloRetangulo {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite um número inteiro positivo n: ");
+        int n = scanner.nextInt();
+
+
+        if (n <= 0) {
+            System.out.println("O número deve ser maior que 0.");
+            scanner.close();
+            return;
+        }
+
+
+        List<Integer> hipotenusas = new ArrayList<>();
+
+        for (int h = 1; h <= n; h++) {
+            // Verificando se h pode ser a hipotenusa de um triângulo retângulo com catetos inteiros
+            boolean encontrou = false;
+            for (int a = 1; a < h && !encontrou; a++) {
+                for (int b = a; b < h && !encontrou; b++) {
+                    if (a * a + b * b == h * h) {
+                        hipotenusas.add(h);
+                        encontrou = true;
+                    }
+                }
+            }
+        }
+
+        System.out.println("Os números entre 1 e " + n + " que são comprimentos de hipotenusa de um triângulo retângulo com catetos inteiros são:");
+        for (int h : hipotenusas) {
+            System.out.println(h);
+        }
+
+        scanner.close();
+    }
+}
