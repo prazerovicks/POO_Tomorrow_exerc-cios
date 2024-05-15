@@ -1,0 +1,20 @@
+public class VerificaTriangular {
+
+    public static boolean eTriangular(int numero) {
+        for (int k = 1; k * (k + 1) * (k + 2) <= numero; k++) {
+            if (k * (k + 1) * (k + 2) == numero) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        int numero = 120; // Você pode alterar esse valor para testar outros números
+        if (eTriangular(numero)) {
+            System.out.println(numero + " é um número triangular.");
+        } else {
+            System.out.println(numero + " não é um número triangular.");
+        }
+    }
+}
