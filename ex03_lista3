@@ -1,0 +1,54 @@
+public class Produto {
+    private String nome;
+    private double preco;
+    private int quantidadeEmEstoque;
+
+    public Produto(String nome, double preco, int quantidadeEmEstoque) {
+        this.nome = nome;
+        this.preco = preco;
+        this.quantidadeEmEstoque = quantidadeEmEstoque;
+    }
+
+    public void aumentarEstoque(int quantidade) {
+        if (quantidade > 0) {
+            quantidadeEmEstoque += quantidade;
+            System.out.println("Estoque aumentado em " + quantidade + " unidades.");
+        } else {
+            System.out.println("Quantidade inválida para aumento de estoque.");
+        }
+    }
+
+    public void diminuirEstoque(int quantidade) {
+        if (quantidade > 0 && quantidade <= quantidadeEmEstoque) {
+            quantidadeEmEstoque -= quantidade;
+            System.out.println("Estoque diminuído em " + quantidade + " unidades.");
+        } else {
+            System.out.println("Quantidade inválida para diminuição de estoque ou estoque insuficiente.");
+        }
+    }
+
+    public void exibirInformacoes() {
+        System.out.println("Nome: " + nome);
+        System.out.println("Preço: R$" + preco);
+        System.out.println("Quantidade em Estoque: " + quantidadeEmEstoque);
+    }
+
+    public static void main(String[] args) {
+        Produto produto1 = new Produto("Camiseta", 29.99, 50);
+        Produto produto2 = new Produto("Calça Jeans", 79.99, 30);
+
+        System.out.println("Informações do Produto 1:");
+        produto1.exibirInformacoes();
+
+        System.out.println("\nInformações do Produto 2:");
+        produto2.exibirInformacoes();
+
+        produto1.aumentarEstoque(20);
+        produto1.diminuirEstoque(10);
+        produto1.exibirInformacoes();
+
+        produto2.aumentarEstoque(15);
+        produto2.diminuirEstoque(40);
+        produto2.exibirInformacoes();
+    }
+}
