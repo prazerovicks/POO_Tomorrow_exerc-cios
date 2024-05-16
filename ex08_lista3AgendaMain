@@ -1,0 +1,33 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Agenda {
+    private List<Compromisso> compromissos;
+
+    public Agenda() {
+        compromissos = new ArrayList<>();
+    }
+
+    public void adicionarCompromisso(Compromisso compromisso) {
+        compromissos.add(compromisso);
+    }
+
+    public List<Compromisso> getCompromissos() {
+        return compromissos;
+    }
+
+    public static void main(String[] args) {
+        Agenda agenda = new Agenda();
+
+        //compromissos na agenda
+        agenda.adicionarCompromisso(new Compromisso(Mes.JANEIRO, "Reunião de planejamento"));
+        agenda.adicionarCompromisso(new Compromisso(Mes.FEVEREIRO, "Conferência anual"));
+        agenda.adicionarCompromisso(new Compromisso(Mes.MARCO, "Apresentação de resultados"));
+        agenda.adicionarCompromisso(new Compromisso(Mes.ABRIL, "Workshop de treinamento"));
+
+        // compromissos
+        for (Compromisso compromisso : agenda.getCompromissos()) {
+            System.out.println(compromisso);
+        }
+    }
+}
