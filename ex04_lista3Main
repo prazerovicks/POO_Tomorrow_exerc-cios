@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Informe o nome do produto: ");
+        String nome = scanner.nextLine();
+
+        System.out.print("Informe o preço de custo do produto: ");
+        double precoCusto = scanner.nextDouble();
+
+        System.out.print("Informe o preço de venda do produto: ");
+        double precoVenda = scanner.nextDouble();
+
+        Produto produto = new Produto(nome, precoCusto, precoVenda);
+
+        System.out.println("Nome do produto: " + produto.getNome());
+        System.out.println("Preço de custo: " + produto.getPrecoCusto());
+        System.out.println("Preço de venda: " + produto.getPrecoVenda());
+        System.out.println("Margem de lucro em moeda: " + produto.getMargemLucro());
+        System.out.println("Margem de lucro em percentual: " + produto.getMargemLucroPorcentagem() + "%");
+
+        scanner.close();
+    }
+}
