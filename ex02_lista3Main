@@ -1,0 +1,49 @@
+public class Main {
+    public static void main(String[] args) {
+        char[] respostasGabarito = {'A', 'B', 'C', 'D', 'E', 'A', 'B', 'C', 'D', 'E', 'A', 'B', 'C', 'D', 'E'};
+        Gabarito gabarito = new Gabarito(respostasGabarito);
+
+        Prova provaAluno1 = new Prova(gabarito);
+        provaAluno1.respostaAluno('A');
+        provaAluno1.respostaAluno('B');
+        provaAluno1.respostaAluno('C');
+        provaAluno1.respostaAluno('D');
+        provaAluno1.respostaAluno('E');
+        provaAluno1.respostaAluno('A');
+        provaAluno1.respostaAluno('B');
+        provaAluno1.respostaAluno('C');
+        provaAluno1.respostaAluno('D');
+        provaAluno1.respostaAluno('E');
+        provaAluno1.respostaAluno('A');
+        provaAluno1.respostaAluno('B');
+        provaAluno1.respostaAluno('C');
+        provaAluno1.respostaAluno('D');
+        provaAluno1.respostaAluno('E');
+
+        Prova provaAluno2 = new Prova(gabarito);
+        provaAluno2.respostaAluno('A');
+        provaAluno2.respostaAluno('A');
+        provaAluno2.respostaAluno('A');
+        provaAluno2.respostaAluno('A');
+        provaAluno2.respostaAluno('A');
+        provaAluno2.respostaAluno('A');
+        provaAluno2.respostaAluno('A');
+        provaAluno2.respostaAluno('A');
+        provaAluno2.respostaAluno('A');
+        provaAluno2.respostaAluno('A');
+        provaAluno2.respostaAluno('A');
+        provaAluno2.respostaAluno('A');
+        provaAluno2.respostaAluno('A');
+        provaAluno2.respostaAluno('A');
+        provaAluno2.respostaAluno('A');
+
+        System.out.println("Aluno 1 Acertos: " + provaAluno1.acertos());
+        System.out.println("Aluno 1 Nota: " + provaAluno1.nota());
+
+        System.out.println("Aluno 2 Acertos: " + provaAluno2.acertos());
+        System.out.println("Aluno 2 Nota: " + provaAluno2.nota());
+
+        Prova melhorProva = provaAluno1.maior(provaAluno2);
+        System.out.println("Melhor Prova Nota: " + melhorProva.nota());
+    }
+}
