@@ -1,0 +1,25 @@
+class Retangulo extends ObjetoGeometrico {
+    private double lado1, lado2;
+
+    public Retangulo(double lado1, double lado2) {
+        this.lado1 = lado1;
+        this.lado2 = lado2;
+    }
+
+    @Override
+    public double calcularArea() {
+        return lado1 * lado2;
+    }
+
+    @Override
+    public double calcularPerimetro() {
+        return 2 * (lado1 + lado2);
+    }
+
+    @Override
+    public void mostrarDados() {
+        System.out.println("Retângulo: lado1=" + lado1 + ", lado2=" + lado2);
+        System.out.println("Área: " + calcularArea());
+        System.out.println("Perímetro: " + calcularPerimetro());
+    }
+}
