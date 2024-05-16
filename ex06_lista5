@@ -1,0 +1,85 @@
+import java.util.Scanner;
+
+public class SistemaCBPOO {
+    private static Scanner scanner = new Scanner(System.in);
+    private static CBPOOController controller = new CBPOOController();
+
+    public static void main(String[] args) {
+        int opcao;
+        do {
+            exibirMenu();
+            opcao = lerOpcao();
+            switch (opcao) {
+                case 1:
+                    fazerLogin();
+                    break;
+                case 2:
+                    inscreverParticipante();
+                    break;
+                case 3:
+                    // Outras operações...
+                    break;
+                case 14:
+                    // Operações de listagem...
+                    break;
+                case 15:
+                    // Operações de visualização...
+                    break;
+                case 16:
+                    System.out.println("Encerrando o programa. Obrigado!");
+                    break;
+                default:
+                    System.out.println("Opção inválida. Por favor, escolha novamente.");
+                    break;
+            }
+        } while (opcao != 16);
+    }
+
+    private static void exibirMenu() {
+        System.out.println("Menu:");
+        System.out.println("1. Fazer login");
+        System.out.println("2. Inscrever participante");
+        // Outras opções do menu...
+        System.out.println("16. Sair");
+        System.out.print("Escolha uma opção: ");
+    }
+
+    private static int lerOpcao() {
+        return scanner.nextInt();
+    }
+
+    private static void fazerLogin() {
+        String cpf = lerCpf();
+        String senha = lerSenha();
+        boolean sucesso = controller.fazerLogin(cpf, senha);
+        if (sucesso) {
+            System.out.println("Login bem-sucedido!");
+        } else {
+            System.out.println("CPF ou senha inválidos. Tente novamente.");
+        }
+    }
+
+    private static String lerCpf() {
+        System.out.print("Digite seu CPF: ");
+        return scanner.next();
+    }
+
+    private static String lerSenha() {
+        System.out.print("Digite sua senha: ");
+        return scanner.next();
+    }
+
+    private static void inscreverParticipante() {
+        String cpf = lerCpf();
+        String senha = lerSenha();
+        // ler outros dados do participante...
+        boolean sucesso = controller.inscreverParticipante(cpf, senha);
+        if (sucesso) {
+            System.out.println("Inscrição realizada com sucesso!");
+        } else {
+            System.out.println("Erro ao inscrever participante. Verifique os dados e tente novamente.");
+        }
+    }
+
+}
+
