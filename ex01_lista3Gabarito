@@ -1,0 +1,17 @@
+public class Gabarito {
+    private char[] respostas;
+
+    public Gabarito(char[] respostas) {
+        if (respostas.length != 15) {
+            throw new IllegalArgumentException("O gabarito deve conter exatamente 15 respostas.");
+        }
+        this.respostas = respostas;
+    }
+
+    public char respostaQuestao(int numeroQuestao) {
+        if (numeroQuestao < 1 || numeroQuestao > 15) {
+            throw new IllegalArgumentException("Número da questão deve estar entre 1 e 15.");
+        }
+        return respostas[numeroQuestao - 1];
+    }
+}
