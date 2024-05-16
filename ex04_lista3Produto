@@ -1,0 +1,62 @@
+public class Produto {
+    private String nome;
+    private double precoCusto;
+    private double precoVenda;
+    private double margemLucro;
+
+    // Construtor
+    public Produto(String nome, double precoCusto, double precoVenda) {
+        this.nome = nome;
+        this.precoCusto = precoCusto;
+        setPrecoVenda(precoVenda);
+        calcularMargemLucro();
+    }
+
+    // Métodos get e set
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public double getPrecoCusto() {
+        return precoCusto;
+    }
+
+    public void setPrecoCusto(double precoCusto) {
+        this.precoCusto = precoCusto;
+        calcularMargemLucro();
+    }
+
+    public double getPrecoVenda() {
+        return precoVenda;
+    }
+
+    public void setPrecoVenda(double precoVenda) {
+        if (precoVenda < precoCusto) {
+            System.out.println("Preço de venda não pode ser inferior ao preço de custo.");
+        } else {
+            this.precoVenda = precoVenda;
+            calcularMargemLucro();
+        }
+    }
+
+    public double getMargemLucro() {
+        return margemLucro;
+    }
+
+    // Método para calcular a margem de lucro
+    private void calcularMargemLucro() {
+        this.margemLucro = this.precoVenda - this.precoCusto;
+    }
+
+    // Método para obter a margem de lucro em percentual
+    public double getMargemLucroPorcentagem() {
+        if (precoCusto == 0) {
+            return 0;
+        }
+        return (margemLucro / precoCusto) * 100;
+    }
+}
