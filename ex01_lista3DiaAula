@@ -1,0 +1,27 @@
+package model;
+
+import java.time.LocalDateTime;
+
+public class DiaAula {
+    private LocalDateTime dataHora;
+    private Turma turma;
+    private String conteudoMinistrado;
+
+    public DiaAula(LocalDateTime dataHora, Turma turma, String conteudoMinistrado) {
+        this.dataHora = dataHora;
+        this.turma = turma;
+        this.conteudoMinistrado = conteudoMinistrado;
+    }
+
+    public LocalDateTime getDataHora() {
+        return dataHora;
+    }
+
+    public Turma getTurma() {
+        return turma;
+    }
+
+    public String getConteudoMinistrado() {
+        return conteudoMinistrado;
+    }
+}
