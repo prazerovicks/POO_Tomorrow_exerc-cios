@@ -1,0 +1,19 @@
+package model;
+
+public class Turma {
+    private String codigo;
+    private String disciplina;
+
+    public Turma(String codigo, String disciplina) {
+        this.codigo = codigo;
+        this.disciplina = disciplina;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public String getDisciplina() {
+        return disciplina;
+    }
+}
