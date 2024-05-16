@@ -1,0 +1,48 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainFilmes {
+    public static void main(String[] args) {
+        //  filmes
+        Filme filme1 = new Filme("Interestelar", "Christopher Nolan", "Matthew McConaughey, Anne Hathaway", "Ficção Científica", "PG-13");
+        Filme filme2 = new Filme("O Poderoso Chefão", "Francis Ford Coppola", "Marlon Brando, Al Pacino", "Crime, Drama", "R");
+        Filme filme3 = new Filme("A Origem", "Christopher Nolan", "Leonardo DiCaprio, Joseph Gordon-Levitt", "Ação, Ficção Científica", "PG-13");
+
+        //críticas de usuários
+        filme1.adicionarCritica(4);
+        filme1.adicionarCritica(5);
+        filme1.adicionarCritica(3);
+
+        filme2.adicionarCritica(5);
+        filme2.adicionarCritica(4);
+
+        filme3.adicionarCritica(5);
+        filme3.adicionarCritica(4);
+        filme3.adicionarCritica(4);
+
+        // média das avaliações
+        System.out.println("Média de avaliações para " + filme1.getTitulo() + ": " + filme1.calcularMediaAvaliacoes());
+        System.out.println("Média de avaliações para " + filme2.getTitulo() + ": " + filme2.calcularMediaAvaliacoes());
+        System.out.println("Média de avaliações para " + filme3.getTitulo() + ": " + filme3.calcularMediaAvaliacoes());
+
+        // filmes com base em preferências do usuário
+        List<Filme> recomendacoes = recomendarFilmes("Ação", 4.0); // Exemplo: usuário gosta de filmes de Ação e avaliações acima de 4.0
+        System.out.println("\nFilmes recomendados:");
+        for (Filme filme : recomendacoes) {
+            System.out.println(filme.getTitulo());
+        }
+    }
+
+    public static List<Filme> recomendarFilmes(String generoPreferido, double avaliacaoMinima) {
+        List<Filme> filmesRecomendados = new ArrayList<>();
+
+        List<Filme> todosFilmes = new ArrayList<>();
+
+        for (Filme filme : todosFilmes) {
+            if (filme.getGenero().equalsIgnoreCase(generoPreferido) && filme.calcularMediaAvaliacoes() >= avaliacaoMinima) {
+                filmesRecomendados.add(filme);
+            }
+        }
+        return filmesRecomendados;
+    }
+}
