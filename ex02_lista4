@@ -1,0 +1,143 @@
+abstract class ItemAcervo {
+    protected String titulo;
+
+    public ItemAcervo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public abstract void mostrarDados();
+}
+
+class Livro extends ItemAcervo {
+    private String situacao;
+
+    public Livro(String titulo) {
+        super(titulo);
+        this.situacao = "disponível";
+    }
+
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void emprestar() {
+        if (situacao.equals("disponível")) {
+            situacao = "emprestado";
+            System.out.println("Livro '" + titulo + "' foi emprestado.");
+        } else {
+            System.out.println("Livro '" + titulo + "' já está emprestado.");
+        }
+    }
+
+    public void devolver() {
+        if (situacao.equals("emprestado")) {
+            situacao = "disponível";
+            System.out.println("Livro '" + titulo + "' foi devolvido.");
+        } else {
+            System.out.println("Livro '" + titulo + "' não está emprestado.");
+        }
+    }
+
+    @Override
+    public void mostrarDados() {
+        System.out.println("Livro: " + titulo + ", Situação: " + situacao);
+    }
+}
+
+class Periodico extends ItemAcervo {
+    private int numeroVolume;
+
+    public Periodico(String titulo, int numeroVolume) {
+        super(titulo);
+        this.numeroVolume = numeroVolume;
+    }
+
+    public int getNumeroVolume() {
+        return numeroVolume;
+    }
+
+    @Override
+    public void mostrarDados() {
+        System.out.println("Periódico: " + titulo + ", Volume: " + numeroVolume);
+    }
+}
+
+class Biblioteca {
+    private List<ItemAcervo> acervo;
+
+    public Biblioteca() {
+        this.acervo = new ArrayList<>();
+    }
+
+    public void adicionarItem(ItemAcervo item) {
+        acervo.add(item);
+    }
+
+    public void mostrarAcervo() {
+        for (ItemAcervo item : acervo) {
+            item.mostrarDados();
+        }
+    }
+
+    public Livro buscarLivro(String titulo) {
+        for (ItemAcervo item : acervo) {
+            if (item instanceof Livro && item.getTitulo().equals(titulo)) {
+                return (Livro) item;
+            }
+        }
+        return null;
+    }
+
+    public Periodico buscarPeriodico(String titulo) {
+        for (ItemAcervo item : acervo) {
+            if (item instanceof Periodico && item.getTitulo().equals(titulo)) {
+                return (Periodico) item;
+            }
+        }
+        return null;
+    }
+}
+
+public class SistemaBiblioteca {
+    public static void main(String[] args) {
+        Biblioteca biblioteca = new Biblioteca();
+
+        Livro livro1 = new Livro("Java Programming");
+        Livro livro2 = new Livro("Design Patterns");
+        Periodico periodico1 = new Periodico("Science Today", 42);
+        Periodico periodico2 = new Periodico("Tech Monthly", 7);
+
+        biblioteca.adicionarItem(livro1);
+        biblioteca.adicionarItem(livro2);
+        biblioteca.adicionarItem(periodico1);
+        biblioteca.adicionarItem(periodico2);
+
+        biblioteca.mostrarAcervo();
+
+        System.out.println("\nRealizando empréstimos:");
+        Livro livroEmprestado = biblioteca.buscarLivro("Java Programming");
+        if (livroEmprestado != null) {
+            livroEmprestado.emprestar();
+        }
+
+        Periodico periodicoNaoEmprestado = biblioteca.buscarPeriodico("Science Today");
+        if (periodicoNaoEmprestado != null) {
+            System.out.println("Periódicos não podem ser emprestados.");
+        }
+
+        System.out.println("\nSituação do acervo após empréstimo:");
+        biblioteca.mostrarAcervo();
+
+        System.out.println("\nRealizando devolução:");
+        if (livroEmprestado != null) {
+            livroEmprestado.devolver();
+        }
+
+        System.out.println("\nSituação do acervo após devolução:");
+        biblioteca.mostrarAcervo();
+    }
+}
