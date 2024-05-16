@@ -1,0 +1,25 @@
+package model;
+
+public class RegistroFrequencia {
+    private Aluno aluno;
+    private DiaAula diaAula;
+    private boolean presente;
+
+    public RegistroFrequencia(Aluno aluno, DiaAula diaAula, boolean presente) {
+        this.aluno = aluno;
+        this.diaAula = diaAula;
+        this.presente = presente;
+    }
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public DiaAula getDiaAula() {
+        return diaAula;
+    }
+
+    public boolean isPresente() {
+        return presente;
+    }
+}
