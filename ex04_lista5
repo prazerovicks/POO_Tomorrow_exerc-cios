@@ -1,0 +1,133 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+class Medico {
+    private String nome;
+    private String especialidade;
+    private String registro;
+
+    public Medico(String nome, String especialidade, String registro) {
+        this.nome = nome;
+        this.especialidade = especialidade;
+        this.registro = registro;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEspecialidade() {
+        return especialidade;
+    }
+
+    public String getRegistro() {
+        return registro;
+    }
+}
+
+class Paciente {
+    private String nome;
+    private String email;
+    private String telefone;
+
+    public Paciente(String nome, String email, String telefone) {
+        this.nome = nome;
+        this.email = email;
+        this.telefone = telefone;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+}
+
+class Consulta {
+    private Paciente paciente;
+    private Medico medico;
+    private String horario;
+
+    public Consulta(Paciente paciente, Medico medico, String horario) {
+        this.paciente = paciente;
+        this.medico = medico;
+        this.horario = horario;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public String getHorario() {
+        return horario;
+    }
+}
+
+class SistemaConsultasMedicas {
+    private Map<Medico, List<String>> agendaMedicos;
+    private Map<Paciente, List<Consulta>> consultasPacientes;
+
+    public SistemaConsultasMedicas() {
+        this.agendaMedicos = new HashMap<>();
+        this.consultasPacientes = new HashMap<>();
+    }
+
+    public void adicionarMedico(Medico medico) {
+        if (!agendaMedicos.containsKey(medico)) {
+            agendaMedicos.put(medico, new ArrayList<>());
+        }
+    }
+
+    public List<String> verificarDisponibilidadeHorarios(Medico medico) {
+        return agendaMedicos.getOrDefault(medico, new ArrayList<>());
+    }
+
+    public void agendarConsulta(Paciente paciente, Medico medico, String horario) {
+        Consulta consulta = new Consulta(paciente, medico, horario);
+        if (!consultasPacientes.containsKey(paciente)) {
+            consultasPacientes.put(paciente, new ArrayList<>());
+        }
+        consultasPacientes.get(paciente).add(consulta);
+        agendaMedicos.get(medico).add(horario);
+    }
+
+    public void enviarLembrete(Paciente paciente) {
+        System.out.println("Lembrete enviado para o paciente: " + paciente.getNome());
+    }
+
+    public List<Consulta> listarConsultasPaciente(Paciente paciente) {
+        return consultasPacientes.getOrDefault(paciente, new ArrayList<>());
+    }
+}
+
+public class MainConsultasMedicas {
+    public static void main(String[] args) {
+        Medico medico1 = new Medico("Dr. Pedro", "Clínico Geral", "123456");
+        Paciente paciente1 = new Paciente("João", "joao@email.com", "987654321");
+        SistemaConsultasMedicas sistemaConsultas = new SistemaConsultasMedicas();
+        sistemaConsultas.adicionarMedico(medico1);
+        List<String> horariosDisponiveis = sistemaConsultas.verificarDisponibilidadeHorarios(medico1);
+        for (String horario : horariosDisponiveis) {
+            System.out.println(horario);
+        }
+        sistemaConsultas.agendarConsulta(paciente1, medico1, "2024-05-25 10:00");
+        sistemaConsultas.enviarLembrete(paciente1);
+        List<Consulta> consultasJoao = sistemaConsultas.listarConsultasPaciente(paciente1);
+        for (Consulta consulta : consultasJoao) {
+            System.out.println("Médico: " + consulta.getMedico().getNome() +
+                               ", Horário: " + consulta.getHorario());
+        }
+    }
+}
