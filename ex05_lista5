@@ -1,0 +1,74 @@
+import java.util.ArrayList;
+import java.util.List;
+
+class Veiculo {
+    private String modelo;
+    private String placa;
+    private int anoFabricacao;
+    private double capacidadeCarga;
+
+    public Veiculo(String modelo, String placa, int anoFabricacao, double capacidadeCarga) {
+        this.modelo = modelo;
+        this.placa = placa;
+        this.anoFabricacao = anoFabricacao;
+        this.capacidadeCarga = capacidadeCarga;
+    }
+}
+
+class Manutencao {
+    private String tipo;
+    private String descricao;
+    private double custo;
+
+    public Manutencao(String tipo, String descricao, double custo) {
+        this.tipo = tipo;
+        this.descricao = descricao;
+        this.custo = custo;
+    }
+}
+
+class Entrega {
+    private Veiculo veiculo;
+    private String destino;
+    private boolean urgente;
+
+    public Entrega(Veiculo veiculo, String destino, boolean urgente) {
+        this.veiculo = veiculo;
+        this.destino = destino;
+        this.urgente = urgente;
+    }
+}
+
+class Rastreamento {
+    // simular o rastreamento em tempo real...
+}
+
+class Relatorios {
+    // relatórios e estatísticas...
+}
+
+public class SistemaGestaoFrotaVeiculos {
+    public static void main(String[] args) {
+        // instâncias das classes e utilizar os métodos conforme necessário
+    }
+}
+public class SistemaGestaoFrotaVeiculos {
+    public static void main(String[] args) {
+        // Criando veículos
+        Veiculo veiculo1 = new Veiculo("Caminhão", "ABC1234", 2020, 5000);
+        Veiculo veiculo2 = new Veiculo("Van", "DEF5678", 2018, 3000);
+        Veiculo veiculo3 = new Veiculo("Carro", "GHI9012", 2019, 2000);
+
+        //manutenção em um veículo
+        Manutencao manutencao = new Manutencao("Troca de óleo", "Troca de óleo do motor", 100.0);
+
+        // agendando entrega
+        Entrega entrega = new Entrega(veiculo1, "Cliente A", true);
+
+        // rastreamento de um veículo
+        Rastreamento rastreamento = new Rastreamento();
+
+        //relatórios e estatísticas
+        Relatorios relatorios = new Relatorios();
+    }
+}
