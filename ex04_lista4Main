@@ -1,0 +1,18 @@
+public class Loja {
+    public static void main(String[] args) {
+        DVD dvd = new DVD();
+        CD cd = new CD();
+
+        System.out.println("Inserir dados do DVD:");
+        dvd.inserirDados();
+
+        System.out.println("\nDados do DVD:");
+        dvd.printDados();
+
+        System.out.println("\nInserir dados do CD:");
+        cd.inserirDados();
+
+        System.out.println("\nDados do CD:");
+        cd.printDados();
+    }
+}
