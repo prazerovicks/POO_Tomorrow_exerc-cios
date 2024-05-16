@@ -1,0 +1,94 @@
+public class Ponto {
+    private int x;
+    private int y;
+
+    public Ponto() {
+        this.x = 0;
+        this.y = 0;
+    }
+
+    // Construtor com parametros x e y
+    public Ponto(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public Ponto(Ponto ponto) {
+        this.x = ponto.x;
+        this.y = ponto.y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public void desloca(int dx, int dy) {
+        this.x += dx;
+        this.y += dy;
+    }
+//versao com outro ponto
+    public void desloca(Ponto ponto) {
+        this.x += ponto.x;
+        this.y += ponto.y;
+    }
+
+    // setPonto (versão com coordenadas)
+    public void setPonto(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    //setPonto (versão com outro ponto)
+    public void setPonto(Ponto ponto) {
+        this.x = ponto.x;
+        this.y = ponto.y;
+    }
+
+    //toString para imprimir o ponto
+    @Override
+    public String toString() {
+        return "Ponto(" + "x=" + x + ", y=" + y + ')';
+    }
+
+
+
+
+    //MAIN
+    public static void main(String[] args) {
+        // testando construtrores
+        Ponto p1 = new Ponto();
+        Ponto p2 = new Ponto(3, 4);
+        Ponto p3 = new Ponto(p2);
+
+        // Imprimindo pontos
+        System.out.println("Ponto p1: " + p1); // Ponto(0,0)
+        System.out.println("Ponto p2: " + p2); // Ponto(3,4)
+        System.out.println("Ponto p3: " + p3); // Ponto(3,4)
+
+        // testando deslocamento
+        p1.desloca(5, 7);
+        System.out.println("Ponto p1 após deslocar (5,7): " + p1); // Ponto(5,7)
+
+        p2.desloca(p1);
+        System.out.println("Ponto p2 após deslocar com p1: " + p2); // Ponto(8,11)
+
+        // testando setPonto
+        p3.setPonto(10, 10);
+        System.out.println("Ponto p3 após setPonto(10,10): " + p3); // Ponto(10,10)
+
+        p3.setPonto(p1);
+        System.out.println("Ponto p3 após setPonto(p1): " + p3); // Ponto(5,7)
+    }
+}
