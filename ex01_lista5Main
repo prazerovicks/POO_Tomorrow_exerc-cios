@@ -1,0 +1,53 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        // alunos
+        Aluno aluno1 = new Aluno("João", 16, "9A", new double[]{8.5, 7.0, 9.5});
+        Aluno aluno2 = new Aluno("Maria", 17, "9B", new double[]{7.0, 6.5, 8.0});
+        Aluno aluno3 = new Aluno("Pedro", 15, "9A", new double[]{6.0, 8.0, 7.5});
+
+        List<Aluno> alunos = new ArrayList<>();
+        alunos.add(aluno1);
+        alunos.add(aluno2);
+        alunos.add(aluno3);
+
+        // professores
+        Professor professor1 = new Professor("Ana", List.of("Matemática", "Física"), 20);
+        Professor professor2 = new Professor("Carlos", List.of("Português", "História"), 18);
+
+        List<Professor> professores = new ArrayList<>();
+        professores.add(professor1);
+        professores.add(professor2);
+
+        // criar disciplinas
+        Disciplina disciplina1 = new Disciplina("Matemática", "Segunda-feira, 8h", professor1, alunos);
+        Disciplina disciplina2 = new Disciplina("Português", "Terça-feira, 10h", professor2, alunos);
+
+        List<Disciplina> disciplinas = new ArrayList<>();
+        disciplinas.add(disciplina1);
+        disciplinas.add(disciplina2);
+
+        // criar o sistema de escola
+        SistemaEscola sistema = new SistemaEscola(alunos, professores, disciplinas);
+
+        // calcular médias dos alunos
+        sistema.calcularMedias();
+
+        // lista alunos aprovados e reprovados
+        System.out.println("Alunos Aprovados:");
+        sistema.listarAprovados().forEach(System.out::println);
+
+        System.out.println("\nAlunos Reprovados:");
+        sistema.listarReprovados().forEach(System.out::println);
+
+        //horários das disciplinas
+        System.out.println("\nHorários das Disciplinas:");
+        sistema.exibirHorariosDisciplinas();
+
+        //informações de turmas
+        System.out.println("\nInformações de Turmas:");
+        sistema.exibirInformacoesTurmas();
+    }
+}
