@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class CD extends Midia {
+    private int nMusicas;
+
+    public CD() {
+        super();
+    }
+
+    public CD(int c, double p, String n, int m) {
+        super(c, p, n);
+        this.nMusicas = m;
+    }
+
+    @Override
+    public String getTipo() {
+        return "CD";
+    }
+
+    @Override
+    public String getDetalhes() {
+        return super.getDetalhes() + "\nNúmero de Músicas: " + nMusicas;
+    }
+
+    public void setMusica(int m) {
+        this.nMusicas = m;
+    }
+
+    @Override
+    public void inserirDados() {
+        super.inserirDados();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Número de Músicas: ");
+        this.nMusicas = scanner.nextInt();
+    }
+
+    // Getter and setter for nMusicas
+    public int getnMusicas() {
+        return nMusicas;
+    }
+
+    public void setnMusicas(int nMusicas) {
+        this.nMusicas = nMusicas;
+    }
+}
