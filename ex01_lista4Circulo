@@ -1,0 +1,27 @@
+class Circulo extends ObjetoGeometrico {
+    private double x, y;
+    private double raio;
+
+    public Circulo(double x, double y, double raio) {
+        this.x = x;
+        this.y = y;
+        this.raio = raio;
+    }
+
+    @Override
+    public double calcularArea() {
+        return Math.PI * raio * raio;
+    }
+
+    @Override
+    public double calcularPerimetro() {
+        return 2 * Math.PI * raio;
+    }
+
+    @Override
+    public void mostrarDados() {
+        System.out.println("Círculo: centro=(" + x + ", " + y + "), raio=" + raio);
+        System.out.println("Área: " + calcularArea());
+        System.out.println("Perímetro: " + calcularPerimetro());
+    }
+}
