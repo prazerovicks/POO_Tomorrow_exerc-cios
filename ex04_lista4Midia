@@ -1,0 +1,64 @@
+import java.util.Scanner;
+
+public class Midia {
+    protected int codigo;
+    protected double preco;
+    protected String nome;
+
+    public Midia() {
+    }
+
+    public Midia(int c, double p, String n) {
+        this.codigo = c;
+        this.preco = p;
+        this.nome = n;
+    }
+
+    public String getTipo() {
+        return "Midia";
+    }
+
+    public String getDetalhes() {
+        return "Codigo: " + codigo + "\nPreco: " + preco + "\nNome: " + nome;
+    }
+
+    public void printDados() {
+        System.out.println(getDetalhes());
+    }
+
+    public void inserirDados() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Codigo: ");
+        this.codigo = scanner.nextInt();
+        System.out.print("Preco: ");
+        this.preco = scanner.nextDouble();
+        scanner.nextLine(); // Consumir a nova linha
+        System.out.print("Nome: ");
+        this.nome = scanner.nextLine();
+    }
+
+    // Getters and setters
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+}
