@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+public class Hourly extends Employee {
+    private double hourlyRate;
+    private double hours;
+
+    public Hourly(String name, double hourlyRate) {
+        super(name);
+        this.hourlyRate = hourlyRate;
+        this.hours = 0;
+    }
+
+    @Override
+    public double getPay() {
+        return hourlyRate * hours;
+    }
+
+    public void addHours(double hours) {
+        this.hours += hours;
+    }
+
+    public void insertData() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter name: ");
+        this.name = scanner.nextLine();
+        System.out.print("Enter hourly rate: ");
+        this.hourlyRate = scanner.nextDouble();
+    }
+
+
+    public double getHourlyRate() {
+        return hourlyRate;
+    }
+
+    public void setHourlyRate(double hourlyRate) {
+        this.hourlyRate = hourlyRate;
+    }
+
+    public double getHours() {
+        return hours;
+    }
+
+    public void setHours(double hours) {
+        this.hours = hours;
+    }
+}
