@@ -1,0 +1,11 @@
+public class TesteObjetosGeometricos {
+    public static void main(String[] args) {
+        ObjetoGeometrico circulo = new Circulo(0, 0, 5);
+        ObjetoGeometrico retangulo = new Retangulo(4, 5);
+        ObjetoGeometrico triangulo = new Triangulo(3, 4, 5);
+
+        circulo.mostrarDados();
+        retangulo.mostrarDados();
+        triangulo.mostrarDados();
+    }
+}
