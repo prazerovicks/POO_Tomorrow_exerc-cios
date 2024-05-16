@@ -1,0 +1,25 @@
+import java.time.LocalDate;
+
+public abstract class ContaBancaria {
+    private int identificador;
+    private int agencia;
+    private Cliente cliente;
+    private double saldo;
+
+    public ContaBancaria(int identificador, int agencia, Cliente cliente) {
+        this.identificador = identificador;
+        this.agencia = agencia;
+        this.cliente = cliente;
+        this.saldo = 0.0;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public abstract void sacar(double valor);
+
+    public abstract void depositar(double valor);
+
+    public abstract void historicoTransacoes(LocalDate data);
+}
