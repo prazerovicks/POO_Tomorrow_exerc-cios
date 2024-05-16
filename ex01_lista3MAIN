@@ -1,0 +1,51 @@
+import model.Aluno;
+import model.Turma;
+import model.DiaAula;
+import model.RegistroFrequencia;
+import model.RegistroNota;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+public class Main {
+    public static void main(String[] args) {
+   
+        Aluno aluno = new Aluno("João", 12345, LocalDate.of(2000, 5, 15));
+
+        Turma turma = new Turma("INF123", "Programação Java");
+
+        // Criando um dia de aula
+        DiaAula diaAula = new DiaAula(LocalDateTime.of(2024, 5, 15, 8, 0), turma, "Introdução à linguagem Java");
+
+        // Registrando a frequEncia do aluno na aula
+        RegistroFrequencia registroFrequencia = new RegistroFrequencia(aluno, diaAula, true);
+
+        // Registrando a nota na turma
+        RegistroNota registroNota = new RegistroNota(aluno, turma, 8.5);
+
+        // mOSTRANDO INFOS
+        System.out.println("Informações do Aluno:");
+        System.out.println("Nome: " + aluno.getNome());
+        System.out.println("Matrícula: " + aluno.getMatricula());
+        System.out.println("Data de Nascimento: " + aluno.getDataNascimento());
+
+        System.out.println("\nInformações da Turma:");
+        System.out.println("Código: " + turma.getCodigo());
+        System.out.println("Disciplina: " + turma.getDisciplina());
+
+        System.out.println("\nInformações do Dia de Aula:");
+        System.out.println("Data e Hora: " + diaAula.getDataHora());
+        System.out.println("Turma: " + diaAula.getTurma().getCodigo() + " - " + diaAula.getTurma().getDisciplina());
+        System.out.println("Conteúdo Ministrado: " + diaAula.getConteudoMinistrado());
+
+        System.out.println("\nInformações do Registro de Frequência:");
+        System.out.println("Aluno: " + registroFrequencia.getAluno().getNome());
+        System.out.println("Dia de Aula: " + registroFrequencia.getDiaAula().getDataHora());
+        System.out.println("Presente: " + (registroFrequencia.isPresente() ? "Sim" : "Não"));
+
+        System.out.println("\nInformações do Registro de Nota:");
+        System.out.println("Aluno: " + registroNota.getAluno().getNome());
+        System.out.println("Turma: " + registroNota.getTurma().getCodigo() + " - " + registroNota.getTurma().getDisciplina());
+        System.out.println("Nota: " + registroNota.getNota());
+    }
+}
