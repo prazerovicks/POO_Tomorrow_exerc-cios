@@ -1,13 +1,11 @@
 public class Singleton {
-    // Atributo estático que contém a única instância da classe Singleton
     private static Singleton instanciaUnica;
 
-    // Construtor privado para evitar a criação de novas instâncias
     private Singleton() {
-        // Inicializações podem ser feitas aqui, se necessário
+        //fazer inicializacao aqui
     }
 
-    // Método estático que retorna a única instância da classe Singleton
+    // retorna a única instância da classe Singleton
     public static Singleton getInstance() {
         if (instanciaUnica == null) {
             instanciaUnica = new Singleton();
@@ -15,20 +13,20 @@ public class Singleton {
         return instanciaUnica;
     }
 
-    // Método exemplo para demonstrar funcionalidade
+    // demonstrar funcionalidade
     public void mostrarMensagem() {
         System.out.println("Olá, eu sou a única instância da classe Singleton!");
     }
 
     public static void main(String[] args) {
-        // Obtendo a única instância da classe Singleton
+        // obtendo instância da classe Singleton
         Singleton instancia1 = Singleton.getInstance();
         Singleton instancia2 = Singleton.getInstance();
 
-        // Demonstrando que ambas as referências apontam para a mesma instância
+        // ambas as referências apontam para a mesma instância
         System.out.println(instancia1 == instancia2); // true
 
-        // Usando a instância Singleton
+        // usando Singleton
         instancia1.mostrarMensagem();
     }
 }
