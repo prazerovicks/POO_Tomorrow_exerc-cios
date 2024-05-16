@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class Salaried extends Employee {
+    private double salary;
+
+    public Salaried(String name, double salary) {
+        super(name);
+        this.salary = salary;
+    }
+
+    @Override
+    public double getPay() {
+        return salary;
+    }
+
+    public void insertData() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter name: ");
+        this.name = scanner.nextLine();
+        System.out.print("Enter salary: ");
+        this.salary = scanner.nextDouble();
+    }
+
+    // Getter and setter for salary
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+}
