@@ -1,0 +1,25 @@
+package model;
+
+public class RegistroNota {
+    private Aluno aluno;
+    private Turma turma;
+    private double nota;
+
+    public RegistroNota(Aluno aluno, Turma turma, double nota) {
+        this.aluno = aluno;
+        this.turma = turma;
+        this.nota = nota;
+    }
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public Turma getTurma() {
+        return turma;
+    }
+
+    public double getNota() {
+        return nota;
+    }
+}
