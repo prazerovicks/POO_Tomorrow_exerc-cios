@@ -1,0 +1,42 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainEstacionamento {
+    public static void main(String[] args) {
+        // vagas disponíveis
+        Vaga vaga1 = new Vaga(1, "Carro");
+        Vaga vaga2 = new Vaga(2, "Moto");
+        Vaga vaga3 = new Vaga(3, "Carro");
+        Vaga vaga4 = new Vaga(4, "Caminhão");
+
+        List<Vaga> vagasDisponiveis = new ArrayList<>();
+        vagasDisponiveis.add(vaga1);
+        vagasDisponiveis.add(vaga2);
+        vagasDisponiveis.add(vaga3);
+        vagasDisponiveis.add(vaga4);
+
+        SistemaEstacionamento sistemaEstacionamento = new SistemaEstacionamento(vagasDisponiveis);
+
+        // Entrada veículos
+        sistemaEstacionamento.registrarEntrada("ABC1234", "Carro");
+        sistemaEstacionamento.registrarEntrada("XYZ5678", "Moto");
+        sistemaEstacionamento.registrarEntrada("DEF9012", "Caminhão");
+
+        // Saída veículos
+        sistemaEstacionamento.registrarSaida("ABC1234");
+        sistemaEstacionamento.registrarSaida("XYZ5678");
+        sistemaEstacionamento.registrarSaida("DEF9012");
+
+        //lucro do dia
+        double lucroDoDia = sistemaEstacionamento.calcularLucroDoDia();
+        System.out.println("Lucro do dia: R$" + lucroDoDia);
+
+        // veículos que entraram no dia
+        System.out.println("\nVeículos que entraram no dia:");
+        sistemaEstacionamento.listarVeiculosEntraramNoDia();
+
+        // veículos que saíram no dia
+        System.out.println("\nVeículos que saíram no dia:");
+        sistemaEstacionamento.listarVeiculosSairamNoDia();
+    }
+}
