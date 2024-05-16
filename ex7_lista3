@@ -1,0 +1,61 @@
+import java.util.Random;
+
+public class SerieLimitada {
+    // limite instâncias
+    private static final int maximoDeInstancias = 5;
+    // contador instâncias criadas
+    private static int contador = 0;
+
+    // num. série da instância
+    private int numeroSerie;
+
+    // números aleatórios
+    private static Random random = new Random();
+
+    private SerieLimitada() {
+        this.numeroSerie = random.nextInt(100000);
+    }
+
+    // para criar uma nova instância
+    public static SerieLimitada criarInstancia() {
+        if (contador < maximoDeInstancias) {
+            contador++;
+            return new SerieLimitada();
+        } else {
+            System.out.println("Limite máximo de instâncias alcançado.");
+            return null;
+        }
+    }
+
+    //obter o número de série
+    public int getNumeroSerie() {
+        return numeroSerie;
+    }
+
+    //obter o número de instâncias criadas
+    public static int getContador() {
+        return contador;
+    }
+
+
+
+    //MAIN
+    public static void main(String[] args) {
+        // instâncias da classe SerieLimitada
+        SerieLimitada s1 = SerieLimitada.criarInstancia();
+        SerieLimitada s2 = SerieLimitada.criarInstancia();
+        SerieLimitada s3 = SerieLimitada.criarInstancia();
+        SerieLimitada s4 = SerieLimitada.criarInstancia();
+        SerieLimitada s5 = SerieLimitada.criarInstancia();
+        SerieLimitada s6 = SerieLimitada.criarInstancia(); // Esta deve falhar
+
+        //mostrando números de série das instâncias
+        if (s1 != null) System.out.println("Instância 1: " + s1.getNumeroSerie());
+        if (s2 != null) System.out.println("Instância 2: " + s2.getNumeroSerie());
+        if (s3 != null) System.out.println("Instância 3: " + s3.getNumeroSerie());
+        if (s4 != null) System.out.println("Instância 4: " + s4.getNumeroSerie());
+        if (s5 != null) System.out.println("Instância 5: " + s5.getNumeroSerie());
+
+        System.out.println("Número de instâncias criadas: " + SerieLimitada.getContador());
+    }
+}
