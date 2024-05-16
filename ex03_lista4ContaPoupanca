@@ -1,0 +1,32 @@
+import java.time.LocalDate;
+
+public class ContaPoupanca extends ContaBancaria {
+    private double taxaRendimento;
+
+    public ContaPoupanca(int identificador, int agencia, Cliente cliente) {
+        super(identificador, agencia, cliente);
+        this.taxaRendimento = 0.04; // 4% de taxa de rendimento
+    }
+
+    @Override
+    public void sacar(double valor) {
+        double taxa = valor * 0.05; // Taxa de saque de 5%
+        if (valor + taxa > getSaldo()) {
+            System.out.println("Saldo insuficiente para realizar o saque.");
+            return;
+        }
+        setSaldo(getSaldo() - valor - taxa);
+        System.out.println("Saque de R$ " + valor + " realizado com sucesso.");
+    }
+
+    @Override
+    public void depositar(double valor) {
+        setSaldo(getSaldo() + valor);
+        System.out.println("Depósito de R$ " + valor + " realizado com sucesso.");
+    }
+
+    @Override
+    public void historicoTransacoes(LocalDate data) {
+        System.out.println("Histórico de transações para a conta poupança:");
+    }
+}
