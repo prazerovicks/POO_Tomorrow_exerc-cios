@@ -1,0 +1,49 @@
+public class Vetor {
+    private String[] elementos;
+    private int tamanho;
+
+    public Vetor(int tamanhoInicial) {
+        this.elementos = new String[tamanhoInicial];
+        this.tamanho = 0;
+    }
+
+    public void insert(String elemento) {
+        if (tamanho == elementos.length) {
+            aumentarCapacidade();
+        }
+        elementos[tamanho] = elemento;
+        tamanho++;
+    }
+
+    private void aumentarCapacidade() {
+        String[] novoArray = new String[elementos.length * 2];
+        System.arraycopy(elementos, 0, novoArray, 0, elementos.length);
+        elementos = novoArray;
+    }
+
+    public String get(int posicao) {
+        if (posicao < 0 || posicao >= tamanho) {
+            return null;
+        }
+        return elementos[posicao];
+    }
+
+    public int size() {
+        return tamanho;
+    }
+
+    public static void main(String[] args) {
+        Vetor vetor = new Vetor(2);
+
+        vetor.insert("A");
+        vetor.insert("B");
+        vetor.insert("C");
+
+        System.out.println("Elemento na posição 0: " + vetor.get(0)); // A
+        System.out.println("Elemento na posição 1: " + vetor.get(1)); // B
+        System.out.println("Elemento na posição 2: " + vetor.get(2)); // C
+        System.out.println("Elemento na posição 3: " + vetor.get(3)); // null
+
+        System.out.println("Tamanho do vetor: " + vetor.size()); // 3
+    }
+}
